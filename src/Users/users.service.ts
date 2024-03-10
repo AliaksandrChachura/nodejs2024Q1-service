@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from '../interfaces/interfaces';
 import { v4 as uuidv4 } from 'uuid';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -18,7 +19,7 @@ export class UsersService {
     return user;
   }
 
-  create(createUserDto: Pick<User, 'login' | 'password'>): User {
+  create(createUserDto: CreateUserDto): User {
     const newUser: User = {
       id: uuidv4(),
       ...createUserDto,
