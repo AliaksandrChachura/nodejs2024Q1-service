@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TracksService } from './tracks/tracks.service';
 import { TracksController } from './tracks/tracks.controller';
 import { TracksModule } from './tracks/tracks.module';
+import { DbModule } from './db/db.module';
 
 @Module({
   imports: [
@@ -13,9 +14,9 @@ import { TracksModule } from './tracks/tracks.module';
       envFilePath: '.env',
     }),
     UsersModule,
-    TracksModule,
+    DbModule,
   ],
-  controllers: [UsersController, TracksController],
-  providers: [UsersService, TracksService],
+  controllers: [UsersController],
+  providers: [UsersService],
 })
 export class AppModule {}
