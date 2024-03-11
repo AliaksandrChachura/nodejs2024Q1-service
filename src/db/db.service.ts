@@ -3,14 +3,14 @@ import { Injectable } from '@nestjs/common';
 import { UserEntity } from '../Users/entity/user.entity';
 import { DbEntities, Entities } from './types/db.interface';
 // import { Album } from 'src/album/interface/album.interface';
-// import { Artist } from 'src/artist/interface/artist.interface';
-// import { Track } from 'src/track/interface/track.interface';
+import { Artist } from '../Artists/interface/artist.interface';
+// import { Track } from '../Tracks/interface/track.interface';
 
 @Injectable()
 export class DbService {
   users: UserEntity[] = [];
   // albums: Album[] = [];
-  // artists: Artist[] = [];
+  artists: Artist[] = [];
   // tracks: Track[] = [];
 
   // favorites: Favorites = {

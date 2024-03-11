@@ -7,6 +7,9 @@ import { TracksService } from './tracks/tracks.service';
 import { TracksController } from './tracks/tracks.controller';
 import { TracksModule } from './tracks/tracks.module';
 import { DbModule } from './db/db.module';
+import { ArtistsController } from './artists/artists.controller';
+import { ArtistsService } from './artists/artists.service';
+import { ArtistsModule } from './artists/artists.module';
 
 @Module({
   imports: [
@@ -15,8 +18,9 @@ import { DbModule } from './db/db.module';
     }),
     UsersModule,
     DbModule,
+    ArtistsModule,
   ],
-  controllers: [UsersController],
-  providers: [UsersService],
+  controllers: [UsersController, ArtistsController],
+  providers: [UsersService, ArtistsService],
 })
 export class AppModule {}

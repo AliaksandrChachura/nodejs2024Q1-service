@@ -11,7 +11,7 @@ import {
   Put,
   HttpCode,
   HttpStatus,
-  HttpException,
+  NotFoundException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -60,7 +60,7 @@ export class UsersController {
 
   @Delete(':id')
   @HttpCode(204)
-  deleteUser(
+  async deleteUser(
     @Param(
       'id',
       new ParseUUIDPipe({
@@ -70,6 +70,10 @@ export class UsersController {
     )
     id: string,
   ) {
-    this.userService.delete(id);
+    const user = await this.userService.findById(id);
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found.`);
+    }
+    await this.userService.delete(id);
   }
 }
